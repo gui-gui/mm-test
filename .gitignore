@@ -1,0 +1,12 @@
+# Bundler config
+/.bundle
+
+# Build directory
+/build
+
+# Mac
+.DS_Store
+
+# node related packages
+/node_modules
+/.tmp
