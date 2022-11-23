@@ -23,9 +23,11 @@ export default class extends Controller {
   play() {
     document.body.audio.play().then(() => {
       this.totalTimeTarget.innerText = this._formatTime(document.body.audio.duration)
+      this.pauseTarget.classList.remove('hidden')
+      this.pauseTarget.focus()
+      this.playTarget.classList.add('hidden')
+      this.element.classList.remove('hidden')
     })
-    this.pauseTarget.classList.remove('hidden')
-    this.playTarget.classList.add('hidden')
   }
 
   pause() {
@@ -57,7 +59,6 @@ export default class extends Controller {
   }
 
   _render(title) {
-    this.element.classList.remove('hidden')
     this.titleTarget.innerText = title
   }
 }
