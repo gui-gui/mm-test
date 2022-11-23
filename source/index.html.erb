@@ -5,16 +5,29 @@ title: Welcome to Middleman
 <h2 class="text-lg text-gray-800 border-b p-8 lg:px-16 font-bold">Episodes</h2>
 
 <% blog.articles.each do |podcast| %>
-  <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12" data-controller="podcast" data-podcast-sample-mp3-value="/podcast_preview/<%= podcast.data.podcast_sample_mp3 %>" data-podcast-title-value="<%= "#{podcast.data.episode}: #{podcast.title}" %>">
-    <time datetime="<%= podcast.date %>" class="order-first font-mono text-sm leading-7 text-slate-500"><%= podcast.date.strftime('%b %e, %Y') %></time>
+  <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12" data-controller="podcast" data-podcast-mp3-value="<%= podcast_mp3_url(podcast) %>" data-podcast-title-value="<%= "#{podcast.data.episode}: #{podcast.title}" %>">
+    <% if podcast.data.podcast_complete_mp3 %>
+      <div class="mb-2">
+        <span class="-ml-1 px-2 py-1 bg-gradient-to-tl from-secondary to-tertiary text-white font-semibold rounded-full text-xs uppercase">Free full episode</span>
+      </div>
+    <% end %>
+
+    <time datetime="<%= podcast.date %>" class="order-first font-mono text-sm leading-7 text-slate-500 block"><%= podcast.date.strftime('%b %e, %Y') %></time>
     <h3 class="mb-2 text-xl font-black leading-tight text-gray-900 transition duration-300 group-hover:text-secondary-500 ease-in-out"><%= "#{podcast.data.episode}: #{podcast.title}" %></h3>
-    <p class="text-gray-700 font-base"><%= podcast.data["teaser"] %></p>
+    <p class="text-gray-700 font-base max-w-3xl"><%= podcast.data["teaser"] %></p>
+
     <button data-action="podcast#play" class="group font-semibold text-tertiary hover:text-primary text-xs mt-4 uppercase flex items-center gap-2">
       <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-hover:fill-primary h-2.5 w-2.5">
         <path d="M33.75 16.701C34.75 17.2783 34.75 18.7217 33.75 19.299L11.25 32.2894C10.25 32.8668 9 32.1451 9 30.9904L9 5.00962C9 3.85491 10.25 3.13323 11.25 3.71058L33.75 16.701Z"></path>
       </svg>
-      <span>play sample</span>
+
+      <% if podcast.data.podcast_complete_mp3 %>
+        <span>play full episode</span>
+      <% else %>
+        <span>play sample</span>
+      <% end %>
     </button>
+
   </article>
 <% end %>
 

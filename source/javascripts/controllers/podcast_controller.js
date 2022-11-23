@@ -2,14 +2,14 @@ import { Controller } from 'stimulus'
 
 export default class extends Controller {
   static values = {
-    sampleMp3: String,
+    mp3: String,
     title: String
   }
 
   play() {
-    const customEvent = new CustomEvent('play-sample', {
+    const customEvent = new CustomEvent('play-episode', {
       detail: {
-        mp3: this.sampleMp3Value,
+        mp3: this.mp3Value,
         title: this.titleValue,
       }
     })

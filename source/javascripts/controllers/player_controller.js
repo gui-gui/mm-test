@@ -10,18 +10,20 @@ export default class extends Controller {
   }
 
   connect() {
-    document.addEventListener('play-sample', this.playSample.bind(this))
+    document.addEventListener('play-episode', this.playEpisode.bind(this))
     this.element.audio.addEventListener('timeupdate', this._timeupdate.bind(this))
+    this.element.audio.addEventListener('ended', this.pause.bind(this))
   }
 
   disconnect() {
-    document.removeEventListener('play-sample', this.playSample.bind(this))
+    document.removeEventListener('play-episode', this.playEpisode.bind(this))
     this.element.audio.removeEventListener('timeupdate', this._timeupdate.bind(this))
+    this.element.audio.removeEventListener('ended', this.pause.bind(this))
   }
 
-  playSample(event) {
+  playEpisode(event) {
     const {title, mp3} = event.detail
-    if (this.titleTarget.innerText == title) return
+    if (this.titleTarget.innerText == title || !mp3) return
     this._render(title)
     this.element.audio.src = mp3
     this.play()
@@ -46,6 +48,7 @@ export default class extends Controller {
     this.element.audio.pause()
     this.element.audio.src = ""
     if (this.element.audio.muted) this.toggleMute()
+    this._render("")
     this.element.classList.add('hidden')
   }
 
