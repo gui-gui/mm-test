@@ -3,13 +3,13 @@
 
     <div class="hidden md:block">
       <button type="button" data-action="player#play" data-player-target="play" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Play">
-        <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-active:fill-tertiary/80 h-4 w-4">
+        <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-hover:fill-primary h-4 w-4">
           <path d="M33.75 16.701C34.75 17.2783 34.75 18.7217 33.75 19.299L11.25 32.2894C10.25 32.8668 9 32.1451 9 30.9904L9 5.00962C9 3.85491 10.25 3.13323 11.25 3.71058L33.75 16.701Z"></path>
         </svg>
       </button>
 
       <button type="button" data-action="player#pause" data-player-target="pause" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Pause">
-        <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-active:fill-tertiary/80 h-4 w-4">
+        <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-hover:fill-primary h-4 w-4">
           <rect x="2" y="2" width="10" height="32"/>
           <rect x="22" y="2" width="10" height="32"/>
         </svg>
@@ -20,28 +20,26 @@
       <span class="truncate text-center text-sm font-bold leading-6 md:text-left" data-player-target="title"></span>
 
       <div class="flex items-center justify-between gap-6 pl-4">
-        <div role="group" aria-labelledby="current-time-label" class="flex flex-auto touch-none items-center gap-6">
-          <label class="sr-only" id="current-time-label">Current time</label>
-
-          <div class="flex items-center gap-1">
-            <output for="react-aria8429829166-2-0" aria-live="off" class="hidden rounded-md font-mono text-sm leading-6 md:block text-gray-800" data-player-target="currentTime">01:04</output>
-            <span class="text-sm leading-6 text-gray-600" aria-hidden="true">/</span>
-            <span class="hidden rounded-md font-mono text-sm leading-6 text-gray-800 md:block" data-player-target="totalTime">01:04</span>
-          </div>
+        <div class="flex flex-auto touch-none items-center gap-1" aria-label="Current Time">
+          <output for="react-aria8429829166-2-0" aria-live="off" class="hidden rounded-md font-mono text-sm leading-6 md:block text-gray-800" data-player-target="currentTime">01:04</output>
+          <span class="text-sm leading-6 text-gray-600" aria-hidden="true">/</span>
+          <span class="hidden rounded-md font-mono text-sm leading-6 text-gray-800 md:block" data-player-target="totalTime">01:04</span>
         </div>
 
-        <div class="flex items-center gap-4">
-          <div class="hidden items-center md:flex">
-            <button type="button" data-action="player#mute" class="group relative rounded-full hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-black/80 focus:ring-offset-2 md:order-none" aria-label="Mute">
-              <div class="absolute -inset-4 md:hidden"></div>
+        <div class="flex items-center gap-3">
+          <button type="button" data-action="player#toggleMute" data-player-target="mute" class="group relative rounded-full hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-black/80 focus:ring-offset-2 md:order-none" aria-label="Mute">
+            <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-gray-800 stroke-gray-800 group-hover:fill-slate-700 group-hover:stroke-slate-700">
+              <path d="M12 6L8 10H6C5.44772 10 5 10.4477 5 11V13C5 13.5523 5.44772 14 6 14H8L12 18V6Z"></path>
+              <path d="M17 7C17 7 19 9 19 12C19 15 17 17 17 17" fill="none" class="group-[.is-muted]:hidden"></path>
+              <path d="M15.5 10.5C15.5 10.5 16 10.9998 16 11.9999C16 13 15.5 13.5 15.5 13.5" fill="none" class="group-[.is-muted]:hidden"></path>
+            </svg>
+          </button>
 
-              <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-gray-800 stroke-gray-800 group-hover:fill-slate-700 group-hover:stroke-slate-700">
-                <path d="M12 6L8 10H6C5.44772 10 5 10.4477 5 11V13C5 13.5523 5.44772 14 6 14H8L12 18V6Z"></path>
-                <path d="M17 7C17 7 19 9 19 12C19 15 17 17 17 17" fill="none" class="group-[.is-muted]:hidden"></path>
-                <path d="M15.5 10.5C15.5 10.5 16 10.9998 16 11.9999C16 13 15.5 13.5 15.5 13.5" fill="none" class="group-[.is-muted]:hidden"></path>
-              </svg>
-            </button>
-          </div>
+          <button type="button" data-action="player#close" class="group w-6 h-6 flex items-center justify-center relative rounded-full hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-black/80 focus:ring-offset-2 md:order-none" aria-label="Close">
+            <svg aria-hidden="true" viewBox="0 0 37 37" class="h-3 w-3 fill-gray-800 stroke-gray-800 group-hover:fill-slate-700 group-hover:stroke-slate-700">
+              <path d="M36.5424 30.4718L24.2424 18.1249L36.5705 5.93745C37.0768 5.4312 37.0768 4.6062 36.5705 4.09995L33.0643 0.574951C32.8205 0.331201 32.4924 0.199951 32.1455 0.199951C31.7986 0.199951 31.4705 0.340576 31.2268 0.574951L18.9549 12.725L6.66426 0.584327C6.42051 0.340577 6.09238 0.209327 5.74551 0.209327C5.39863 0.209327 5.07051 0.349952 4.82676 0.584327L1.32988 4.10933C0.823633 4.61558 0.823633 5.44058 1.32988 5.94683L13.658 18.1343L1.36738 30.4718C1.12363 30.7156 0.983008 31.0437 0.983008 31.3906C0.983008 31.7374 1.11426 32.0656 1.36738 32.3093L4.87363 35.8343C5.12676 36.0874 5.45488 36.2187 5.79238 36.2187C6.12051 36.2187 6.45801 36.0968 6.71113 35.8343L18.9549 23.5343L31.208 35.8249C31.4611 36.0781 31.7893 36.2093 32.1268 36.2093C32.4549 36.2093 32.7924 36.0874 33.0455 35.8249L36.5518 32.3C36.7955 32.0562 36.9361 31.7281 36.9361 31.3812C36.9268 31.0437 36.7861 30.7156 36.5424 30.4718Z"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>

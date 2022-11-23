@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = ["title", "play", "pause", "stop", "mute", "currentTime", "totalTime"]
+  static targets = ["title", "play", "pause", "mute", "currentTime", "totalTime"]
 
   connect() {
     document.addEventListener('play-sample', this.playSample.bind(this))
@@ -34,14 +34,15 @@ export default class extends Controller {
     this.pauseTarget.classList.add('hidden')
   }
 
-  stop() {
+  close() {
     document.body.audio.pause()
     document.body.audio.src = ""
+    if (document.body.audio.muted) this.toggleMute()
     this.element.classList.add('hidden')
   }
 
-  mute(event) {
-    event.currentTarget.classList.toggle('is-muted', !document.body.audio.muted)
+  toggleMute() {
+    this.muteTarget.classList.toggle('is-muted', !document.body.audio.muted)
     document.body.audio.muted = !document.body.audio.muted
   }
 

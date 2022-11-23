@@ -2,20 +2,19 @@
 title: Welcome to Middleman
 ---
 
-<%= partial "shared/nav" %>
-<%= partial "shared/header" %>
+<h2 class="text-lg text-gray-800 border-b p-8 lg:px-16 font-bold">Episodes</h2>
 
-<main class="border-t border-slate-200 lg:relative lg:mb-16 lg:ml-[500px] lg:border-t-0 xl:ml-120">
-  <h2 class="text-lg text-gray-500 border-b p-8 lg:px-16 font-bold">Episodes</h2>
+<% blog.articles.each do |podcast| %>
+  <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12" data-controller="podcast" data-podcast-sample-mp3-value="/podcast_preview/<%= podcast.data.podcast_sample_mp3 %>" data-podcast-title-value="<%= "#{podcast.data.episode}: #{podcast.title}" %>">
+    <time datetime="<%= podcast.date %>" class="order-first font-mono text-sm leading-7 text-slate-500"><%= podcast.date.strftime('%b %e, %Y') %></time>
+    <h3 class="mb-2 text-xl font-black leading-tight text-gray-900 transition duration-300 group-hover:text-secondary-500 ease-in-out"><%= "#{podcast.data.episode}: #{podcast.title}" %></h3>
+    <p class="text-gray-700 font-base"><%= podcast.data["teaser"] %></p>
+    <button data-action="podcast#play" class="group font-semibold text-tertiary hover:text-primary text-xs mt-4 uppercase flex items-center gap-2">
+      <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-hover:fill-primary h-2.5 w-2.5">
+        <path d="M33.75 16.701C34.75 17.2783 34.75 18.7217 33.75 19.299L11.25 32.2894C10.25 32.8668 9 32.1451 9 30.9904L9 5.00962C9 3.85491 10.25 3.13323 11.25 3.71058L33.75 16.701Z"></path>
+      </svg>
+      <span>play sample</span>
+    </button>
+  </article>
+<% end %>
 
-  <% blog.articles.each do |podcast| %>
-    <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12" data-controller="podcast" data-podcast-sample-mp3-value="/podcast_preview/<%= podcast.data.podcast_sample_mp3 %>" data-podcast-title-value="<%= "#{podcast.data.episode}: #{podcast.title}" %>">
-      <time datetime="<%= podcast.date %>" class="order-first font-mono text-sm leading-7 text-slate-500"><%= podcast.date.strftime('%b %e, %Y') %></time>
-      <h3 class="mb-2 text-xl font-black leading-tight text-gray-900 transition duration-300 group-hover:text-secondary-500 ease-in-out"><%= "#{podcast.data.episode}: #{podcast.title}" %></h3>
-      <p class="text-gray-700 font-base"><%= podcast.data["teaser"] %></p>
-      <button data-action="podcast#play" class="font-semibold text-tertiary text-xs mt-4 uppercase">play sample</button>
-    </article>
-  <% end %>
-</main>
-
-<%= partial "shared/player" %>

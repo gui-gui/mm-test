@@ -10,7 +10,14 @@
     <%= stylesheet_link_tag "build" %>
     <%= javascript_include_tag "build" %>
   </head>
-  <body data-controller="audio"></body>
-    <%= yield %>
+  <body data-controller="audio">
+    <%= partial "shared/nav" %>
+    <%= partial "shared/header" %>
+
+    <main class="border-t border-slate-200 lg:relative lg:mb-16 lg:ml-[500px] lg:border-t-0">
+      <%= yield %>
+    </main>
+
+    <%= partial "shared/player" %>
   </body>
 </html>

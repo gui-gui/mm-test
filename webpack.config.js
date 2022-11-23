@@ -25,10 +25,7 @@ module.exports = {
       },
       {
         test: /\.(mp3|jpg|png|svg)$/,
-        use: ["file-loader"],
-        options: {
-          name: '[path][name].[ext]'
-        }
+        use: ["file-loader"]
       },
     ]
   }

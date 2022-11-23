@@ -14,6 +14,10 @@ module.exports = {
         primary: "#FF0000",
         secondary: "#FF8A00",
         tertiary: "#DB00FF",
+        bege: {
+          100: "#FDF6EA",
+          200: "#FBEDD6",
+        }
       },
     },
   },
