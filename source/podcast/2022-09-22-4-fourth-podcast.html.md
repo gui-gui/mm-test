@@ -1,0 +1,7 @@
+---
+title: His Last Bow
+teaser: A corpse is found in the suburbs of London. A detective is approached to investigate it when all other attempts at solving the case fail.
+podcast_preview: 4.mp3
+---
+
+This is the fourth podcast text

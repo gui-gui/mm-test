@@ -16,3 +16,14 @@ activate :external_pipeline,
   command: build? ? 'NODE_ENV=production ./node_modules/webpack/bin/webpack.js --bail' : 'NODE_ENV=development ./node_modules/webpack/bin/webpack.js --watch --color',
   source: ".tmp/dist",
   latency: 1
+
+
+activate :blog do |blog|
+  # see: https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/extension.rb
+  blog.prefix = "podcast"
+  blog.layout    = "podcast"
+  blog.paginate  = true
+  # URI prefix
+  blog.permalink = "{episode}-{title}.html"
+  blog.sources   = "{year}-{month}-{day}-{episode}-{title}.html"
+end
