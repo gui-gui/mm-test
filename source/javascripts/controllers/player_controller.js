@@ -3,53 +3,59 @@ import { Controller } from 'stimulus'
 export default class extends Controller {
   static targets = ["title", "play", "pause", "mute", "currentTime", "totalTime"]
 
+  initialize () {
+    this.element['audio'] = new Audio('data:audio/mpeg;base64,//OExAAAAAAAAAAAAEluZm8AAAAHAAAABAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/P39/f39/f39/f39/f39/f39/f39/f39/f3+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/AAAAAAAAAAAAAAAAAAAAAAAAAAAAJAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//MUxAAAAANIAAAAAExBTUUzLjk2LjFV//MUxAsAAANIAAAAAFVVVVVVVVVVVVVV//MUxBYAAANIAAAAAFVVVVVVVVVVVVVV//MUxCEAAANIAAAAAFVVVVVVVVVVVVVV')
+    this.element.addEventListener('click', this._unlockAudio)
+    this.element.addEventListener('touchstart', this._unlockAudio)
+  }
+
   connect() {
     document.addEventListener('play-sample', this.playSample.bind(this))
-    document.body.audio.addEventListener('timeupdate', this._timeupdate.bind(this))
+    this.element.audio.addEventListener('timeupdate', this._timeupdate.bind(this))
   }
 
   disconnect() {
     document.removeEventListener('play-sample', this.playSample.bind(this))
-    document.body.audio.removeEventListener('timeupdate', this._timeupdate.bind(this))
+    this.element.audio.removeEventListener('timeupdate', this._timeupdate.bind(this))
   }
 
   playSample(event) {
     const {title, mp3} = event.detail
-    document.body.audio.src = mp3
+    if (this.titleTarget.innerText == title) return
     this._render(title)
+    this.element.audio.src = mp3
     this.play()
   }
 
   play() {
-    document.body.audio.play().then(() => {
-      this.totalTimeTarget.innerText = this._formatTime(document.body.audio.duration)
+    this.element.audio.play().then(() => {
+      this.totalTimeTarget.innerText = this._formatTime(this.element.audio.duration)
       this.pauseTarget.classList.remove('hidden')
-      this.pauseTarget.focus()
       this.playTarget.classList.add('hidden')
       this.element.classList.remove('hidden')
     })
   }
 
   pause() {
-    document.body.audio.pause()
+    this.element.audio.pause()
     this.playTarget.classList.remove('hidden')
     this.pauseTarget.classList.add('hidden')
   }
 
   close() {
-    document.body.audio.pause()
-    document.body.audio.src = ""
-    if (document.body.audio.muted) this.toggleMute()
+    this.element.audio.pause()
+    this.element.audio.src = ""
+    if (this.element.audio.muted) this.toggleMute()
     this.element.classList.add('hidden')
   }
 
   toggleMute() {
-    this.muteTarget.classList.toggle('is-muted', !document.body.audio.muted)
-    document.body.audio.muted = !document.body.audio.muted
+    this.muteTarget.classList.toggle('is-muted', !this.element.audio.muted)
+    this.element.audio.muted = !this.element.audio.muted
   }
 
   _timeupdate() {
-    this.currentTimeTarget.innerText = this._formatTime(document.body.audio.currentTime)
+    this.currentTimeTarget.innerText = this._formatTime(this.element.audio.currentTime)
   }
 
   _formatTime(time) {
@@ -60,5 +66,14 @@ export default class extends Controller {
 
   _render(title) {
     this.titleTarget.innerText = title
+  }
+
+  _unlockAudio = () => {
+    this.element.removeEventListener('click', this._unlockAudio)
+    this.element.removeEventListener('touchstart', this._unlockAudio)
+    this.element['audio']
+      .play()
+      .then(() => {})
+      .catch(() => {})
   }
 }
