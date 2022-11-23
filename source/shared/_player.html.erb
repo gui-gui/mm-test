@@ -1,38 +1,44 @@
-<div class="fixed bottom-2 z-20 right-2">
-  <div class="flex items-center gap-6 bg-white/70 p-2 px-2.5 rounded-full h-12">
+<div class="hidden fixed bottom-2 z-20 right-2" data-controller="player">
+  <div class="flex items-center gap-4 bg-white/70 p-2 px-2.5 rounded-full h-12">
 
     <div class="hidden md:block">
-      <button type="button" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Play">
-        <div class="absolute -inset-3 md:hidden"></div>
+      <button type="button" data-action="player#play" data-player-target="play" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Play">
         <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-active:fill-tertiary/80 h-4 w-4">
           <path d="M33.75 16.701C34.75 17.2783 34.75 18.7217 33.75 19.299L11.25 32.2894C10.25 32.8668 9 32.1451 9 30.9904L9 5.00962C9 3.85491 10.25 3.13323 11.25 3.71058L33.75 16.701Z"></path>
+        </svg>
+      </button>
+
+      <button type="button" data-action="player#pause" data-player-target="pause" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Pause">
+        <svg aria-hidden="true" viewBox="0 0 36 36" class="fill-tertiary group-active:fill-tertiary/80 h-4 w-4">
+          <rect x="2" y="2" width="10" height="32"/>
+          <rect x="22" y="2" width="10" height="32"/>
         </svg>
       </button>
     </div>
 
     <div class="flex flex-1 items-center gap-3 overflow-hidden p-1">
-      <span class="truncate text-center text-sm font-bold leading-6 md:text-left">3: The Wet Bandits</span>
+      <span class="truncate text-center text-sm font-bold leading-6 md:text-left" data-player-target="title"></span>
 
-      <div class="flex items-center justify-between gap-6">
+      <div class="flex items-center justify-between gap-6 pl-4">
         <div role="group" aria-labelledby="current-time-label" class="flex flex-auto touch-none items-center gap-6">
           <label class="sr-only" id="current-time-label">Current time</label>
 
-          <div class="flex items-center gap-2">
-            <output for="react-aria8429829166-2-0" aria-live="off" class="hidden rounded-md px-1 py-0.5 font-mono text-sm leading-6 md:block text-gray-800">01:04</output>
+          <div class="flex items-center gap-1">
+            <output for="react-aria8429829166-2-0" aria-live="off" class="hidden rounded-md font-mono text-sm leading-6 md:block text-gray-800" data-player-target="currentTime">01:04</output>
             <span class="text-sm leading-6 text-gray-600" aria-hidden="true">/</span>
-            <span class="hidden rounded-md px-1 py-0.5 font-mono text-sm leading-6 text-gray-800 md:block">01:04</span>
+            <span class="hidden rounded-md font-mono text-sm leading-6 text-gray-800 md:block" data-player-target="totalTime">01:04</span>
           </div>
         </div>
 
         <div class="flex items-center gap-4">
           <div class="hidden items-center md:flex">
-            <button type="button" class="group relative rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 md:order-none" aria-label="Mute">
+            <button type="button" data-action="player#mute" class="group relative rounded-full hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-black/80 focus:ring-offset-2 md:order-none" aria-label="Mute">
               <div class="absolute -inset-4 md:hidden"></div>
 
               <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-gray-800 stroke-gray-800 group-hover:fill-slate-700 group-hover:stroke-slate-700">
                 <path d="M12 6L8 10H6C5.44772 10 5 10.4477 5 11V13C5 13.5523 5.44772 14 6 14H8L12 18V6Z"></path>
-                <path d="M17 7C17 7 19 9 19 12C19 15 17 17 17 17" fill="none"></path>
-                <path d="M15.5 10.5C15.5 10.5 16 10.9998 16 11.9999C16 13 15.5 13.5 15.5 13.5" fill="none"></path>
+                <path d="M17 7C17 7 19 9 19 12C19 15 17 17 17 17" fill="none" class="group-[.is-muted]:hidden"></path>
+                <path d="M15.5 10.5C15.5 10.5 16 10.9998 16 11.9999C16 13 15.5 13.5 15.5 13.5" fill="none" class="group-[.is-muted]:hidden"></path>
               </svg>
             </button>
           </div>

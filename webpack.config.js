@@ -22,7 +22,14 @@ module.exports = {
           'css-loader',
           'postcss-loader',
         ]
-      }
+      },
+      {
+        test: /\.(mp3|jpg|png|svg)$/,
+        use: ["file-loader"],
+        options: {
+          name: '[path][name].[ext]'
+        }
+      },
     ]
   }
 }

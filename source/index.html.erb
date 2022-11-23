@@ -9,10 +9,11 @@ title: Welcome to Middleman
   <h2 class="text-lg text-gray-500 border-b p-8 lg:px-16 font-bold">Episodes</h2>
 
   <% blog.articles.each do |podcast| %>
-    <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12">
+    <article class="<%= "border-b" unless podcast == page_articles.last %> border-dashed p-8 lg:px-16 lg:py-12" data-controller="podcast" data-podcast-sample-mp3-value="/podcast_preview/<%= podcast.data.podcast_sample_mp3 %>" data-podcast-title-value="<%= "#{podcast.data.episode}: #{podcast.title}" %>">
       <time datetime="<%= podcast.date %>" class="order-first font-mono text-sm leading-7 text-slate-500"><%= podcast.date.strftime('%b %e, %Y') %></time>
       <h3 class="mb-2 text-xl font-black leading-tight text-gray-900 transition duration-300 group-hover:text-secondary-500 ease-in-out"><%= "#{podcast.data.episode}: #{podcast.title}" %></h3>
       <p class="text-gray-700 font-base"><%= podcast.data["teaser"] %></p>
+      <button data-action="podcast#play" class="font-semibold text-tertiary text-xs mt-4 uppercase">play sample</button>
     </article>
   <% end %>
 </main>
