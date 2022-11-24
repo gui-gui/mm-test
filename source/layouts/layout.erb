@@ -3,19 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title><%= current_page.data.title || "Middleman" %></title>
     <%= stylesheet_link_tag "build" %>
     <%= javascript_include_tag "build" %>
+
+    <script type="text/javascript">
+      window.MemberfulOptions = {site: "https://jensbakery.memberful.localhost"};
+
+      (function() {
+        var s   = document.createElement('script');
+
+        s.type  = 'text/javascript';
+        s.async = true;
+        s.src   = 'https://d35xxde4fgg0cx.cloudfront.net/assets/embedded.js';
+
+        setup = function() { window.MemberfulEmbedded.setup(); }
+
+        s.addEventListener("load", setup, false);
+
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();
+    </script>
   </head>
   <body>
     <%= partial "shared/nav" %>
     <%= partial "shared/header" %>
 
 
-    <main class="border-t border-slate-200 lg:relative lg:mb-16 lg:ml-[500px] lg:border-t-0">
+    <main class="border-t border-slate-200 lg:relative mb-12 lg:mb-16 lg:ml-[500px] lg:border-t-0">
       <%= yield %>
     </main>
 

@@ -1,4 +1,4 @@
-<section class="p-8 lg:px-16 bg-gradient-to-b from-bege-100 to-white" data-controller="toggle">
+<section class="py-8 lg:p-8 lg:px-16 bg-gradient-to-b from-bege-100 to-white" data-controller="toggle">
   <p class="text-xl text-center max-w-2xl mx-auto mb-10">The Crime Chronicles club is an members-only space where you get access to all our podcast episodes and to our newsletter.</p>
 
   <div class="mx-auto w-auto text-center border-t border-dashed py-10 mt-10">
@@ -12,40 +12,44 @@
     </div>
   </div>
 
-  <div class="container mx-auto flex flex-col gap-6 items-center justify-center max-w-lg p-4 lg:max-w-full sm:p-10 lg:flex-row">
-    <div class="flex flex-col items-center justify-center flex-1 p-4 pb-8 sm:p-8 lg:p-16">
-			<span class="inline-block px-4 py-0.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full mb-4 text-base font-semibold">Watson</span>
-			<p class="text-5xl font-bold text-center" data-triggered-by="monthly">10€ / month</p>
-			<p class="text-5xl font-bold text-center hidden" data-triggered-by="yearly">100€ / year</p>
-      <ul class="my-8 text-lg">
-        <li class="flex items-center mb-2 space-x-2">
-          <%= inline_svg("icons/circle-check.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-green-500") %>
-          <span class="whitespace-nowrap">Access to our newsletter</span>
-        </li>
-        <li class="flex items-center mb-2 space-x-2">
-           <%= inline_svg("icons/circle-x.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-red-500") %>
-          <span class="whitespace-nowrap line-through">Access to our podcast episodes</span>
-        </li>
-      </ul>
-			<button class="px-8 py-3 mt-6 text-lg font-semibold border rounded-xl sm:mt-12 border-gray-700">Subscribe</button>
-		</div>
-
-    <div class="bg-gradient-to-br from-primary via-secondary to-tertiary rounded-2xl p-5 flex-1 shadow-2xl">
-      <div class="flex flex-col items-center justify-center flex-1 pb-8 text-center rounded-xl sm:p-8 lg:p-16 bg-gradient-to-tl from-white/90 to-white">
-  			<span class="inline-block px-4 py-0.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full mb-4 text-base font-semibold">Sherlock</span>
-        <p class="text-5xl font-bold text-center" data-triggered-by="monthly">20€ / month</p>
-        <p class="text-5xl font-bold text-center hidden" data-triggered-by="yearly">200€ / month</p>
-        <ul class="my-8 text-lg">
-          <li class="flex items-center mb-2 space-x-2">
+  <div class="container mx-auto flex flex-col gap-6 lg:gap-10 items-center justify-center max-w-4xl lg:flex-row lg:my-10">
+    <div class="flex flex-col items-center justify-center w-full">
+      <div class="flex flex-1 flex-col items-center justify-center my-5 lg:mx-5 lg:px-6 py-12">
+        <span class="inline-block px-4 py-0.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full mb-4 text-base font-semibold">Watson</span>
+        <p class="text-3xl lg:text-5xl font-bold text-center" data-triggered-by="monthly">10€ / month</p>
+        <p class="text-3xl lg:text-5xl font-bold text-center hidden" data-triggered-by="yearly">100€ / year</p>
+        <ul class="my-8 text-base lg:text-xl">
+          <li class="flex items-center my-3 space-x-2">
             <%= inline_svg("icons/circle-check.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-green-500") %>
             <span class="whitespace-nowrap">Access to our newsletter</span>
           </li>
-          <li class="flex items-center mb-2 space-x-2">
+          <li class="flex items-center my-3 space-x-2">
+            <%= inline_svg("icons/circle-x.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-red-500") %>
+            <span class="whitespace-nowrap line-through">Access to our podcast episodes</span>
+          </li>
+        </ul>
+        <a href="http://jensbakery.memberful.localhost/checkout?plan=86320" data-triggered-by="monthly" class="px-8 py-3 text-lg font-semibold rounded-xl bg-gray-800 text-gray-50">Subscribe</a>
+        <a href="http://jensbakery.memberful.localhost/checkout?plan=86321" data-triggered-by="yearly" class="hidden px-8 py-3 text-lg font-semibold rounded-xl bg-gray-800 text-gray-50">Subscribe</a>
+      </div>
+		</div>
+
+    <div class="flex items-center justify-center w-full bg-gradient-to-br from-primary via-secondary to-tertiary lg:rounded-2xl shadow-2xl">
+      <div class="flex flex-1 flex-col items-center justify-center my-5 lg:mx-5 lg:px-6 py-12 lg:rounded-xl bg-gradient-to-tl from-white/90 to-white">
+  			<span class="inline-block px-4 py-0.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full mb-4 text-base font-semibold">Sherlock</span>
+        <p class="text-3xl lg:text-5xl font-bold text-center" data-triggered-by="monthly">20€ / month</p>
+        <p class="text-3xl lg:text-5xl font-bold text-center hidden" data-triggered-by="yearly">200€ / month</p>
+        <ul class="my-8 text-base lg:text-xl">
+          <li class="flex items-center my-3 space-x-2">
+            <%= inline_svg("icons/circle-check.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-green-500") %>
+            <span class="whitespace-nowrap">Access to our newsletter</span>
+          </li>
+          <li class="flex items-center my-3 space-x-2">
             <%= inline_svg("icons/circle-check.svg", aria_hidden: true, class: "flex-shrink-0 w-8 h-8 text-green-500") %>
             <span class="whitespace-nowrap">Access to all podcast episodes</span>
           </li>
         </ul>
-        <button class="px-8 py-3 mt-6 text-lg font-semibold rounded-xl sm:mt-12 bg-gray-800 text-gray-50">Subscribe</button>
+        <a href="http://jensbakery.memberful.localhost/checkout?plan=86322" data-triggered-by="monthly" class="px-8 py-3 text-lg font-semibold rounded-xl bg-gray-800 text-gray-50">Subscribe</a>
+        <a href="http://jensbakery.memberful.localhost/checkout?plan=86323" data-triggered-by="yearly" class="hidden px-8 py-3 text-lg font-semibold rounded-xl bg-gray-800 text-gray-50">Subscribe</a>
       </div>
     </div>
 	</div>

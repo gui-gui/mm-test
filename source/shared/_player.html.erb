@@ -1,29 +1,27 @@
-<div class="hidden fixed bottom-2 z-20 right-2" data-controller="player audio" id="player" data-turbo-permanent>
+<div class="hidden fixed bottom-12 z-20 right-0 lg:bottom-2 lg:right-2 bg-gradient-to-l from-primary via-secondary to-tertiary lg:bg-none w-full lg:w-auto p-2 pb-0 lg:p-0" data-controller="player audio" id="player" data-turbo-permanent>
   <div class="flex items-center gap-4 bg-white/70 p-2 px-2.5 rounded-full h-12">
 
-    <div class="hidden md:block">
-      <button type="button" data-action="player#pause" data-player-target="pause" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Pause">
-        <%= inline_svg("icons/player/pause.svg", aria_hidden: true, class: "fill-tertiary group-hover:fill-primary h-4 w-4") %>
-        <span class="sr-only">pause</span>
-      </button>
+    <button type="button" data-action="player#pause" data-player-target="pause" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Pause">
+      <%= inline_svg("icons/player/pause.svg", aria_hidden: true, class: "fill-tertiary group-hover:fill-primary h-4 w-4") %>
+      <span class="sr-only">pause</span>
+    </button>
 
-      <button type="button" data-action="player#play" data-player-target="play" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Play">
-        <%= inline_svg("icons/player/play.svg", aria_hidden: true, class: "fill-tertiary group-hover:fill-primary h-4 w-4") %>
-        <span class="sr-only">play</span>
-      </button>
-    </div>
+    <button type="button" data-action="player#play" data-player-target="play" class="group relative flex flex-shrink-0 items-center justify-center rounded-full bg-white/70 hover:bg-white focus:outline-none focus:ring-black/80 h-8 w-8 focus:ring-2 focus:ring-offset-2" aria-label="Play">
+      <%= inline_svg("icons/player/play.svg", aria_hidden: true, class: "fill-tertiary group-hover:fill-primary h-4 w-4") %>
+      <span class="sr-only">play</span>
+    </button>
 
-    <div class="flex flex-1 items-center gap-3 overflow-hidden p-1">
-      <span class="truncate text-center text-sm font-bold leading-6 md:text-left" data-player-target="title"></span>
+    <div class="flex flex-1 items-center justify-between gap-3 overflow-hidden p-1">
+      <span class="truncate text-left text-sm font-bold leading-6 md:text-left w-2/3 md:w-auto" data-player-target="title"></span>
 
-      <div class="flex items-center justify-between gap-6 pl-4">
-        <div class="flex flex-auto touch-none items-center gap-1" aria-label="Current Time">
-          <output for="react-aria8429829166-2-0" aria-live="off" class="hidden rounded-md font-mono text-sm leading-6 md:block text-gray-800" data-player-target="currentTime">01:04</output>
-          <span class="text-sm leading-6 text-gray-600" aria-hidden="true">/</span>
-          <span class="hidden rounded-md font-mono text-sm leading-6 text-gray-800 md:block" data-player-target="totalTime">01:04</span>
+      <div class="flex items-center justify-between gap-6 pl-4 w-1/3 md:w-auto">
+        <div class="hidden md:flex flex-auto touch-none items-center gap-1 text-gray-800 text-sm font-mono" aria-label="Current Time">
+          <output aria-live="off" data-player-target="currentTime"></output>
+          <span class="text-gray-600" aria-hidden="true">/</span>
+          <span data-player-target="totalTime"></span>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 ml-auto">
           <button type="button" data-action="player#toggleMute" data-player-target="mute" class="group relative rounded-full hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-black/80 focus:ring-offset-2 md:order-none" aria-label="Mute">
             <%= inline_svg("icons/player/mute.svg", aria_hidden: true, class: "h-6 w-6 fill-gray-800 stroke-gray-800 group-hover:fill-slate-700 group-hover:stroke-slate-700") %>
             <span class="sr-only">mute</span>
