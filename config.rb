@@ -4,6 +4,7 @@
 set :relative_links, true
 activate :livereload
 activate :directory_indexes
+activate :inline_svg
 
 activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
