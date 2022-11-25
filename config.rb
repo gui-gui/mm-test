@@ -1,6 +1,7 @@
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
+activate :relative_assets
 set :relative_links, true
 activate :livereload
 activate :directory_indexes
@@ -29,3 +30,8 @@ activate :blog do |blog|
   blog.sources   = "{year}-{month}-{day}-{episode}-{title}.html"
 end
 
+configure :build do
+  set :js_dir, '/'
+  set :css_dir, '/'
+  config[:host] = "https://gui-gui.github.io/mm-test"
+end
