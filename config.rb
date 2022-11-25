@@ -24,7 +24,6 @@ activate :external_pipeline,
 activate :blog do |blog|
   # see: https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/extension.rb
   blog.prefix = "podcast"
-  blog.layout    = "podcast"
   # URI prefix
   blog.permalink = "{episode}-{title}.html"
   blog.sources   = "{year}-{month}-{day}-{episode}-{title}.html"
